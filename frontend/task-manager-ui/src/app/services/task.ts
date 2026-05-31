@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class TaskService {
 
-  private apiUrl = 'http://127.0.0.1:8000';
+  private apiUrl = 'https://task-manager-app-6ijv.onrender.com';
 
   constructor(private http: HttpClient) {}
 

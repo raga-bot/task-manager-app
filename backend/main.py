@@ -9,8 +9,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:4200",
-        "https://*.netlify.app",
-        "https://*.vercel.app"
+        "https://visionary-clafoutis-4e465a.netlify.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
