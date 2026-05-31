@@ -1,0 +1,6 @@
+frontend/task-manager-ui/node_modules
+frontend/task-manager-ui/dist
+backend/venv
+__pycache__
+.angular
+.vscode
