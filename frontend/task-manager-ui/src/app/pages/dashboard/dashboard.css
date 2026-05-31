@@ -1,0 +1,82 @@
+body {
+  background: #f4f7fb;
+}
+
+.container {
+  max-width: 1400px;
+}
+
+.dashboard-title {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.task-form-card {
+  border: none;
+  border-radius: 16px;
+}
+
+.task-column {
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 450px;
+}
+
+.task-card {
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.task-title {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.task-description {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.column-header {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.badge-count {
+  font-size: 13px;
+  padding: 6px 10px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #94a3b8;
+  margin-top: 60px;
+}
+
+.logout-btn {
+  border-radius: 10px;
+}
+
+.add-btn {
+  border-radius: 10px;
+}
+
+.delete-btn {
+  border-radius: 8px;
+}
+
+.form-control,
+.form-select {
+  border-radius: 10px;
+}
+
+.footer-text {
+  color: #94a3b8;
+  font-size: 14px;
+}

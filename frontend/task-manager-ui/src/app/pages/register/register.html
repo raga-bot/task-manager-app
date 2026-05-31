@@ -1,0 +1,24 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card shadow p-4" style="width: 400px;">
+    <h3 class="text-center mb-3">Create Account</h3>
+    <p class="text-center text-muted">Register to use Task Manager</p>
+
+    <div *ngIf="message" class="alert alert-success">
+      {{ message }}
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <input class="form-control mb-3" placeholder="Username" [(ngModel)]="username">
+    <input class="form-control mb-3" placeholder="Password" type="password" [(ngModel)]="password">
+
+    <button class="btn btn-success w-100 mb-3" (click)="register()">Register</button>
+
+    <p class="text-center">
+      Already have an account?
+      <a routerLink="/">Login</a>
+    </p>
+  </div>
+</div>

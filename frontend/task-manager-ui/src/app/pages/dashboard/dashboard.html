@@ -1,0 +1,311 @@
+<div class="container mt-4">
+
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="dashboard-title m-0">Task Manager</h2>
+
+    <button
+      class="btn btn-outline-secondary logout-btn"
+      (click)="logout()">
+      Logout
+    </button>
+  </div>
+
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Add Task Section -->
+  <div class="card shadow task-form-card p-4 mb-4">
+
+    <h4 class="mb-4">Add New Task</h4>
+
+    <div class="row align-items-end">
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Task Title</label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter task title"
+          [(ngModel)]="title">
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Task Description</label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter task description"
+          [(ngModel)]="description">
+      </div>
+
+      <div class="col-md-2 mb-3">
+        <label class="form-label">Select Stage</label>
+
+        <select
+          class="form-select"
+          [(ngModel)]="stage">
+
+          <option>Todo</option>
+          <option>In Progress</option>
+          <option>Done</option>
+
+        </select>
+      </div>
+
+      <div class="col-md-2 mb-3">
+        <button
+          class="btn btn-primary w-100 add-btn"
+          (click)="addTask()">
+
+          Add Task
+
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Task Columns -->
+  <div class="row">
+
+    <!-- Todo -->
+    <div class="col-lg-4 mb-4">
+
+      <div class="card task-column border-primary">
+
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+
+          <span class="column-header">
+            Todo
+          </span>
+
+          <span class="badge bg-light text-dark badge-count">
+            {{ todo.length }}
+          </span>
+
+        </div>
+
+        <div class="card-body">
+
+          <div
+            *ngIf="todo.length === 0"
+            class="empty-state">
+
+            🎉 No tasks available
+
+          </div>
+
+          <div
+            class="card task-card mb-3 shadow-sm"
+            *ngFor="let task of todo">
+
+            <div class="card-body">
+
+              <h6 class="task-title">
+                {{ task.title }}
+              </h6>
+
+              <p class="task-description">
+                {{ task.description }}
+              </p>
+
+              <small class="text-muted">
+                Status
+              </small>
+
+              <select
+                class="form-select mb-2"
+                [ngModel]="task.stage"
+                (ngModelChange)="changeStage(task, $event)">
+
+                <option>Todo</option>
+                <option>In Progress</option>
+                <option>Done</option>
+
+              </select>
+
+              <button
+                class="btn btn-danger btn-sm w-100 delete-btn"
+                (click)="deleteTask(task.id)">
+
+                Delete
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- In Progress -->
+    <div class="col-lg-4 mb-4">
+
+      <div class="card task-column border-warning">
+
+        <div class="card-header bg-warning d-flex justify-content-between align-items-center">
+
+          <span class="column-header">
+            In Progress
+          </span>
+
+          <span class="badge bg-light text-dark badge-count">
+            {{ inProgress.length }}
+          </span>
+
+        </div>
+
+        <div class="card-body">
+
+          <div
+            *ngIf="inProgress.length === 0"
+            class="empty-state">
+
+            🎉 No tasks available
+
+          </div>
+
+          <div
+            class="card task-card mb-3 shadow-sm"
+            *ngFor="let task of inProgress">
+
+            <div class="card-body">
+
+              <h6 class="task-title">
+                {{ task.title }}
+              </h6>
+
+              <p class="task-description">
+                {{ task.description }}
+              </p>
+
+              <small class="text-muted">
+                Status
+              </small>
+
+              <select
+                class="form-select mb-2"
+                [ngModel]="task.stage"
+                (ngModelChange)="changeStage(task, $event)">
+
+                <option>Todo</option>
+                <option>In Progress</option>
+                <option>Done</option>
+
+              </select>
+
+              <button
+                class="btn btn-danger btn-sm w-100 delete-btn"
+                (click)="deleteTask(task.id)">
+
+                Delete
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Done -->
+    <div class="col-lg-4 mb-4">
+
+      <div class="card task-column border-success">
+
+        <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+
+          <span class="column-header">
+            Done
+          </span>
+
+          <span class="badge bg-light text-dark badge-count">
+            {{ done.length }}
+          </span>
+
+        </div>
+
+        <div class="card-body">
+
+          <div
+            *ngIf="done.length === 0"
+            class="empty-state">
+
+            🎉 No tasks available
+
+          </div>
+
+          <div
+            class="card task-card mb-3 shadow-sm"
+            *ngFor="let task of done">
+
+            <div class="card-body">
+
+              <h6 class="task-title">
+                {{ task.title }}
+              </h6>
+
+              <p class="task-description">
+                {{ task.description }}
+              </p>
+
+              <small class="text-muted">
+                Status
+              </small>
+
+              <select
+                class="form-select mb-2"
+                [ngModel]="task.stage"
+                (ngModelChange)="changeStage(task, $event)">
+
+                <option>Todo</option>
+                <option>In Progress</option>
+                <option>Done</option>
+
+              </select>
+
+              <button
+                class="btn btn-danger btn-sm w-100 delete-btn"
+                (click)="deleteTask(task.id)">
+
+                Delete
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="text-center footer-text mt-4 mb-3">
+    Built with Angular • FastAPI • Bootstrap 5
+  </div>
+
+</div>
